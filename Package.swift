@@ -18,7 +18,10 @@ let targets: [Target] = [
     .target(
         name: "Turf",
         dependencies: [],
-        exclude: ["Info.plist"]
+        exclude: ["Info.plist"],
+        swiftSettings: [
+            .interoperabilityMode(.Cxx)
+        ]
     ),
     .testTarget(
         name: "TurfTests",
