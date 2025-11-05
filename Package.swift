@@ -1,4 +1,4 @@
-// swift-tools-version:5.7
+// swift-tools-version:6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -38,7 +38,7 @@ let targets: [Target] = [
 let package = Package(
     name: "Turf",
     platforms: [
-        .macOS(.v10_13), .iOS(.v11), .watchOS(.v4), .tvOS(.v11), .custom("visionos", versionString: "1.0")
+        .macOS(.v10_13), .iOS(.v12), .watchOS(.v4), .tvOS(.v12), .custom("visionos", versionString: "1.0")
     ],
     products: [
         .library(name: "Turf", targets: ["Turf"]),
