@@ -191,7 +191,7 @@ extension Array where Element == [[LocationCoordinate2D]] {
     }
 }
 
-extension LocationCoordinate2D: @retroactive Equatable {
+extension LocationCoordinate2D: Equatable {
     
     /// Instantiates a LocationCoordinate2D from a RadianCoordinate2D
     public init(_ radianCoordinate: RadianCoordinate2D) {
