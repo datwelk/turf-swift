@@ -6,12 +6,10 @@ import CoreLocation
 /**
  A [GeometryCollection geometry](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.8) is a heterogeneous collection of `Geometry` objects that are related.
  */
-public struct GeometryCollection: Equatable, ForeignMemberContainer, Sendable {
+public struct GeometryCollection: Equatable, Sendable {
     /// The geometries contained by the geometry collection.
     public var geometries: [Geometry]
-    
-    public var foreignMembers: JSONObject = [:]
-    
+        
     /**
      Initializes a geometry collection defined by the given geometries.
      
@@ -52,13 +50,11 @@ extension GeometryCollection: Codable {
         _ = try container.decode(Kind.self, forKey: .kind)
         let geometries = try container.decode([Geometry].self, forKey: .geometries)
         self = .init(geometries: geometries)
-        try decodeForeignMembers(notKeyedBy: CodingKeys.self, with: decoder)
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(Kind.GeometryCollection, forKey: .kind)
         try container.encode(geometries, forKey: .geometries)
-        try encodeForeignMembers(notKeyedBy: CodingKeys.self, to: encoder)
     }
 }
