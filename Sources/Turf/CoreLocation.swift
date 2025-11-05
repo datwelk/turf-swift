@@ -99,7 +99,7 @@ extension LocationDirection {
      return value from 360°.
      */
     public func difference(from beta: LocationDirection) -> LocationDirection {
-        let phi = abs(beta - self).truncatingRemainder(dividingBy: 360)
+        let phi = fabs(beta - self).truncatingRemainder(dividingBy: 360)
         return phi > 180 ? 360 - phi : phi
     }
 }
@@ -191,7 +191,7 @@ extension Array where Element == [[LocationCoordinate2D]] {
     }
 }
 
-extension LocationCoordinate2D: Equatable {
+extension LocationCoordinate2D: @retroactive Equatable {
     
     /// Instantiates a LocationCoordinate2D from a RadianCoordinate2D
     public init(_ radianCoordinate: RadianCoordinate2D) {

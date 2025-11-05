@@ -103,8 +103,8 @@ class TurfTests: XCTestCase {
         }
         for point in line {
             let controlPoint = bezierLineString.coordinates.first { (bezierPoint) -> Bool in
-                return fabs(bezierPoint.latitude - point.latitude) < 0.2
-                        && fabs(bezierPoint.longitude - point.longitude) < 0.2
+                return ffabs(bezierPoint.latitude - point.latitude) < 0.2
+                        && ffabs(bezierPoint.longitude - point.longitude) < 0.2
             }
             XCTAssertNotNil(controlPoint, "missing bezier control point")
         }
