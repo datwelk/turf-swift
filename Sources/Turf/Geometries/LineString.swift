@@ -160,12 +160,12 @@ extension LineString {
         let addVertex = { (vertex: LocationCoordinate2D) -> Bool in
             let lastVertex = vertices.last!
             let incrementalDistance = lastVertex.distance(to: vertex)
-            if cumulativeDistance + incrementalDistance <= abs(distance) {
+            if cumulativeDistance + incrementalDistance <= fabs(distance) {
                 vertices.append(vertex)
                 cumulativeDistance += incrementalDistance
                 return true
             } else {
-                let remainingDistance = abs(distance) - cumulativeDistance
+                let remainingDistance = fabs(distance) - cumulativeDistance
                 let direction = lastVertex.direction(to: vertex)
                 let endpoint = lastVertex.coordinate(at: remainingDistance, facing: direction)
                 vertices.append(endpoint)
@@ -187,7 +187,7 @@ extension LineString {
                 }
             }
         }
-        assert(round(cumulativeDistance) <= round(abs(distance)))
+        assert(round(cumulativeDistance) <= round(fabs(distance)))
         return LineString(vertices)
     }
     

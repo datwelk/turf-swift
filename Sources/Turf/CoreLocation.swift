@@ -99,7 +99,7 @@ extension LocationDirection {
      return value from 360°.
      */
     public func difference(from beta: LocationDirection) -> LocationDirection {
-        let phi = abs(beta - self).truncatingRemainder(dividingBy: 360)
+        let phi = fabs(beta - self).truncatingRemainder(dividingBy: 360)
         return phi > 180 ? 360 - phi : phi
     }
 }
